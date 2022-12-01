@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-react-server
+  labels:
+    app.cubernetes.io/name: my-react-server
+    app.cubernetes.io/components: server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.cubernetes.io/name: my-react-server
+      app.cubernetes.io/components: server
+  template:
+    metadata:
+      labels:
+        app.cubernetes.io/name: my-react-server
+        app.cubernetes.io/components: server
+    spec:
+      containers:
+      - name: server
+        image: viacheslavdyachenko/my-react-server:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8899
+          name: http

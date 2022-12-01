@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vaultwarden
+  labels:
+    type: local
+spec:
+  containers:
+    - name: vaultwarden
+      image: vaultwarden/server:latest
+      imagePullPolicy: IfNotPresent
